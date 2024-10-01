@@ -10,9 +10,15 @@ class Series:
         else:
             average_rating = sum(self.ratings)/len(self.ratings)
             return (f"{self.name} ({self.seasons} seasons)\ngenres: {', '.join(map(str, self.genres))}\n{len(self.ratings)}  ratings, average {round(average_rating,1)} points")
+    
+    
     def rate(self, rating:int):
         self.ratings.append(rating)
-
+    def minimum_grade(self, grade:float, series_list:list):
+        newlist = []
+        for series in series_list:
+            average_rating = sum(self.ratings)/len(self.ratings)
+            if series
 
 dexter = Series("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
 dexter.rate(4)
