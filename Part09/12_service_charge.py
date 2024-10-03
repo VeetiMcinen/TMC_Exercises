@@ -4,23 +4,20 @@ class BankAccount:
         self.__owner = owner
         self.__account_number = account_number
         self.__balance = balance
-        self.__service_charge
+        self.__service_charge()
     
     @property
     def balance(self):
         return self.__balance
 
-    @balance.setter
     def deposit(self, amount:float):
-        self.__balance += amount
-        self.__service_charge
+        to_be_deposited = amount*0.99
+        self.__balance += to_be_deposited
 
-    @balance.setter
     def withdraw(self, amount:float):
-        self.__balance -= amount
-        self.__service_charge
+        to_be_withdrawn = amount
+        self.__balance -= to_be_withdrawn
     
-    @balance.setter
     def __service_charge(self):
         self.__balance *= 0.99
 
