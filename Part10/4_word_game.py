@@ -37,9 +37,9 @@ class LongestWord(WordGame):
         super().__init__(rounds)
 
     def round_winner(self, player1_word: str, player2_word: str):
-        if player1_word > player2_word:
+        if len(player1_word) > len(player2_word):
             return 1
-        elif player2_word > player1_word:
+        elif len(player2_word) > len(player1_word):
             return 2
         else:
             return 0
@@ -49,7 +49,7 @@ class MostVowels(WordGame):
         super().__init__(rounds)
     
     def round_winner(self, player1_word: str, player2_word: str):
-        vowels = ['a', 'e', 'i', 'o', 'u']
+        vowels = ['a', 'e', 'i', 'o', 'u', 'y']
         player_1_vowels = [i for i in player1_word if i in vowels]
         player_2_vowels = [i for i in player2_word if i in vowels]
 
@@ -60,6 +60,44 @@ class MostVowels(WordGame):
         else:
             return 0
 
-
 class RockPaperScissors(WordGame):
+    def __init__(self, rounds: int):
+        super().__init__(rounds)
+        self.valid_answers = ["rock", "paper", "scissors"]
     
+    def round_winner(self, player1_word:str, player2_word:str):
+        if player1_word.lower() in self.valid_answers and player2_word in self.valid_answers: #check that both players answered with a correct option
+            if player1_word.lower() == "rock":
+                if player2_word.lower() == "scissors":
+                    return 1
+                elif player2_word.lower() == "paper":
+                    return 2
+                else:
+                    return 0
+                
+            elif player1_word.lower() == "paper":
+                if player2_word.lower() == "rock":
+                    return 1
+                elif player2_word == "scissors":
+                    return 2
+                else:
+                    return 0
+
+            elif player1_word.lower() == "scissors":
+                if player2_word.lower() == "rock":
+                    return 2
+                elif player2_word.lower() == "paper":
+                    return 1
+                else:
+                    return 0
+                
+        elif player1_word.lower() not in self.valid_answers and player2_word in self.valid_answers:
+            return 2
+        elif player1_word.lower() in self.valid_answers and player2_word not in self.valid_answers:
+            return 1
+        else:
+            return 0
+
+
+p = LongestWord(4)
+p.play() 
