@@ -20,7 +20,9 @@ class GameMuseum(GameWarehouse):
     def list_games(self):
         newgames = []
         for i in self._GameWarehouse__games:
-            print(i)
+            if i.year <= 1990:
+                newgames.append(i)
+        return newgames
 
 
 museum = GameMuseum()

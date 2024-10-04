@@ -18,7 +18,7 @@ class Series:
         newlist = []
         for series in series_list:
             average_rating = sum(self.ratings)/len(self.ratings)
-            if series
+            
 
 dexter = Series("Dexter", 8, ["Crime", "Drama", "Mystery", "Thriller"])
 dexter.rate(4)
